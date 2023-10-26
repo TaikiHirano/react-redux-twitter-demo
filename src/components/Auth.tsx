@@ -66,7 +66,7 @@ const Auth: React.FC = () => {
   const [avatarImage, setAvatarImage] = useState<File | null>(null);
   const [isLogin, setIsLogin] = useState(true);
 
-  const onChangeImageHanler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeImageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files![0]) {
       setAvatarImage(e.target.files![0]);
       e.target.value = "";
@@ -139,6 +139,25 @@ const Auth: React.FC = () => {
                     setUsername(e.target.value);
                   }}
                 />
+                <Box textAlign="center">
+                  <IconButton>
+                    <label>
+                      <AccountCircleIcon
+                        fontSize="large"
+                        className={
+                          avatarImage
+                            ? styles.login_addIconLoaded
+                            : styles.login_addIcon
+                        }
+                      />
+                      <input
+                        className={styles.login_hiddenIcon}
+                        type="file"
+                        onChange={onChangeImageHandler}
+                      />
+                    </label>
+                  </IconButton>
+                </Box>
               </>
             )}
 
